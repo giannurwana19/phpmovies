@@ -1,3 +1,17 @@
+<?php 
+
+// koneksi database & pilih database
+$link = mysqli_connect('localhost', 'root', '', 'phpmovies');
+
+// query data: menampilkan semua data dari table movies
+mysqli_query($link, "SELECT * FROM movies");
+
+// mengubah respon data menjadi array
+
+// tampung data array
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +19,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Movies</title>
+
+    <!-- style css -->
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 10%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        table img {
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
