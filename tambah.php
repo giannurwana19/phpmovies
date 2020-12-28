@@ -1,3 +1,24 @@
+<?php
+
+// koneksi database & pilih database
+$link = mysqli_connect('localhost', 'root', '', 'phpmovies');
+
+// cek jika tombol submit sudah ditekan
+if(isset($_POST['submit'])){
+    // ambil semua data form
+    $title = $_POST['title'];
+    $year = $_POST['year'];
+    $genre = $_POST['genre'];
+    $director = $_POST['director'];
+    $description = $_POST['description'];
+    $release_date = $_POST['release_date'];
+    $cover = $_POST['cover'];
+    
+    echo "$title, $year, $genre, $director, $description, $release_date, $cover";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +55,7 @@
 
         <div class="input-group">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" autofocus>
         </div>
 
         <div class="input-group">
@@ -67,7 +88,7 @@
             <input type="text" name="cover" id="cover">
         </div>
 
-        <button type="submit" class="btn-submit">Submit</button>
+        <button type="submit" class="btn-submit" name="submit">Submit</button>
 
     </form>
 </body>
