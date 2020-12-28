@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // koneksi database & pilih database
 $link = mysqli_connect('localhost', 'root', '', 'phpmovies');
@@ -9,12 +9,17 @@ $result = mysqli_query($link, "SELECT * FROM movies");
 // mengambil dan mengubah respon data menjadi array assosiatif (lakukan vardump)
 // yang diambil hanya 1 data, maka dari itu kita looping sampai data pada baris nya habis
 $data = [];
-while($row = mysqli_fetch_assoc($result)){
+while ($row = mysqli_fetch_assoc($result)) {
     $data[] = $row;
 }
 
+// atau bisa juga pake fetch all jika tidak ingin looping
+// $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 // tampung data array
 $movies = $data;
+
+// var_dump($movies);
 
 ?>
 
@@ -39,7 +44,9 @@ $movies = $data;
             width: 100%;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             padding: 10px;
             border: 1px solid #ccc;
         }
@@ -65,23 +72,24 @@ $movies = $data;
         </thead>
         <tbody>
             <?php $no = 1; ?>
-            <?php foreach($movies as $movie): ?>
-            <tr>
-                <td><?= $no; ?></td>
-                <td><?= $movie['title']; ?></td>
-                <td><?= $movie['genre']; ?></td>
-                <td><?= $movie['year']; ?></td>
-                <td>
-                    <img src="img/<?= $movie['cover'] ?>" alt="gambar">
-                </td>
-                <td>
-                    <a href="detail.php/id=<?= $movie['id'] ?>">lihat detail</a> 
-                </td>
-            </tr>
-            <?php $no++; ?>
-            <?php endforeach ?>
+            <?php foreach ($movies as $movie) : ?>
+                <tr>
+                    <td><?= $no; ?></td>
+                    <td><?= $movie['title']; ?></td>
+                    <td><?= $movie['genre']; ?></td>
+                    <td><?= $movie['year']; ?></td>
+                    <td>
+                        <img src="img/<?= $movie['cover'] ?>" alt="gambar">
+                    </td>
+                    <td>
+                        <a href="detail.php?id=<?= $movie['id'] ?>">lihat detail</a>
+                    </td>
+                </tr>
+                <?php $no++; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
+
 </body>
 
 </html>
