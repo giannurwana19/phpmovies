@@ -3,13 +3,20 @@
 // koneksi database & pilih database
 $link = mysqli_connect('localhost', 'root', '', 'phpmovies');
 
-// query data: menampilkan semua data dari table movies
-mysqli_query($link, "SELECT * FROM movies");
+// query data: menampilkan semua data dari table movies (lakukan vardump)
+$result = mysqli_query($link, "SELECT * FROM movies");
 
-// mengubah respon data menjadi array
+// mengambil dan mengubah respon data menjadi array assosiatif (lakukan vardump)
+// yang diambil hanya 1 data, maka dari itu kita looping sampai data pada baris nya habis
+$data = [];
+while($row = mysqli_fetch_assoc($result)){
+    $data[] = $row;
+}
 
 // tampung data array
+$movies = $data;
 
+var_dump($movies);
 ?>
 
 <!DOCTYPE html>
