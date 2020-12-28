@@ -59,6 +59,8 @@ $movies = $data;
 
 <body>
     <h1>Daftar Movies</h1>
+
+    <a href="tambah.php">+ Tambah data</a><br><br>
     <table>
         <thead>
             <tr>
