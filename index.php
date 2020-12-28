@@ -16,7 +16,6 @@ while($row = mysqli_fetch_assoc($result)){
 // tampung data array
 $movies = $data;
 
-var_dump($movies);
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +30,8 @@ var_dump($movies);
     <style>
         body {
             font-family: sans-serif;
-            margin: 10%;
+            margin: 3% 10%;
+
         }
 
         table {
@@ -64,19 +64,22 @@ var_dump($movies);
             </tr>
         </thead>
         <tbody>
+            <?php $no = 1; ?>
+            <?php foreach($movies as $movie): ?>
             <tr>
-                <td>1</td>
-                <td>Joker</td>
-                <td>Crime, drama</td>
-                <td>2019</td>
+                <td><?= $no; ?></td>
+                <td><?= $movie['title']; ?></td>
+                <td><?= $movie['genre']; ?></td>
+                <td><?= $movie['year']; ?></td>
                 <td>
-                    <img src="img/joker.jpg" alt="gambar">
+                    <img src="img/<?= $movie['cover'] ?>" alt="gambar">
                 </td>
                 <td>
-                    <a href="#">Edit</a> | 
-                    <a href="#">Hapus</a>
+                    <a href="detail.php/id=<?= $movie['id'] ?>">lihat detail</a> 
                 </td>
             </tr>
+            <?php $no++; ?>
+            <?php endforeach ?>
         </tbody>
     </table>
 </body>
