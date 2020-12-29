@@ -10,7 +10,10 @@ $id = $_GET['id'];
 // query data: menampilkan data berdasarkan id
 $result = mysqli_query($link, "SELECT * FROM movies WHERE id = '$id'");
 
+// tampung data array
 $movie = mysqli_fetch_assoc($result);
+
+var_dump($movie);
 
 ?>
 
@@ -41,7 +44,7 @@ $movie = mysqli_fetch_assoc($result);
         <li>Director : <?= $movie['director']; ?></li>
     </ul>
 
-    <a href="">Edit</a> |
+    <a href="edit.php?id=<?= $movie['id']; ?>">Edit</a> |
     <a href="hapus.php?id=<?= $movie['id']; ?>" onclick="return confirm('apakah kamu yakin menghapus data ini?')">Hapus</a> |
     <a href="index.php">Home</a>
 </body>
