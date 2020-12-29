@@ -42,7 +42,7 @@ $movie = mysqli_fetch_assoc($result);
     </ul>
 
     <a href="">Edit</a> |
-    <a href="">Hapus</a> |
+    <a href="hapus.php?id=<?= $movie['id']; ?>">Hapus</a> |
     <a href="index.php">Home</a>
 </body>
 
