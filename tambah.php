@@ -6,16 +6,18 @@ $link = mysqli_connect('localhost', 'root', '', 'phpmovies');
 // cek jika tombol submit sudah ditekan
 if (isset($_POST['submit'])) {
     // ambil semua data form
-    $title = $_POST['title'];
-    $slug = strtolower(str_replace(' ', '-', $title));
-    $year = $_POST['year'];
-    $genre = $_POST['genre'];
-    $director = $_POST['director'];
-    $description = $_POST['description'];
-    $release_date = $_POST['release_date'];
-    $cover = $_POST['cover'];
+    // htmlspecialchars(): memfilter jika ada tag html
 
-    $query = "INSERT INTO movises
+    $title = htmlspecialchars($_POST['title']);
+    $slug = strtolower(str_replace(' ', '-', $title));
+    $year = htmlspecialchars($_POST['year']);
+    $genre = htmlspecialchars($_POST['genre']);
+    $director = htmlspecialchars($_POST['director']);
+    $description = htmlspecialchars($_POST['description']);
+    $release_date = htmlspecialchars($_POST['release_date']);
+    $cover = htmlspecialchars($_POST['cover']);
+
+    $query = "INSERT INTO movies
         (title, slug, year, genre, director, description, release_date, cover)
         VALUES ('$title', '$slug', '$year', '$genre', '$director', '$description', '$release_date', '$cover')
     ";
