@@ -6,6 +6,12 @@ $link = mysqli_connect('localhost', 'root', '', 'phpmovies');
 // ambil id
 $id = $_GET['id'];
 
+// cek apakah id nya ada
+if (!isset($id)) {
+    header('Location: index.php');
+    exit;
+}
+
 // buat query
 $query = "SELECT * FROM movies WHERE id = $id";
 
@@ -15,6 +21,7 @@ $result = mysqli_query($link, $query);
 // tampung data 
 $movie = mysqli_fetch_assoc($result);
 
+// cek jika tombol submit sudah ditekan
 if (isset($_POST['submit'])) {
     // ambil semua data form
     // htmlspecialchars(): memfilter jika ada tag html
@@ -29,6 +36,7 @@ if (isset($_POST['submit'])) {
     $release_date = htmlspecialchars($_POST['release_date']);
     $cover = htmlspecialchars($_POST['cover']);
 
+    // buat query
     $query = "UPDATE movies 
     SET
         title = '$title',

@@ -5,7 +5,12 @@ $link = mysqli_connect('localhost', 'root', '', 'phpmovies');
 
 // ambil id, bisa pake $_GET atau $_REQUEST
 $id = $_GET['id'];
-// var_dump($id);
+
+// cek apakah id nya ada
+if (!isset($id)) {
+    header('Location: index.php');
+    exit;
+}
 
 // query data: menampilkan data berdasarkan id
 $result = mysqli_query($link, "SELECT * FROM movies WHERE id = '$id'");

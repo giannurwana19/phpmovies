@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) {
     $release_date = htmlspecialchars($_POST['release_date']);
     $cover = htmlspecialchars($_POST['cover']);
 
+    // buat query
     $query = "INSERT INTO movies
         (title, slug, year, genre, director, description, release_date, cover)
         VALUES ('$title', '$slug', '$year', '$genre', '$director', '$description', '$release_date', '$cover')
