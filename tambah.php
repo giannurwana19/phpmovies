@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $release_date = $_POST['release_date'];
     $cover = $_POST['cover'];
 
-    $query = "INSERT INTO movies
+    $query = "INSERT INTO movises
         (title, slug, year, genre, director, description, release_date, cover)
         VALUES ('$title', '$slug', '$year', '$genre', '$director', '$description', '$release_date', '$cover')
     ";
@@ -23,7 +23,13 @@ if (isset($_POST['submit'])) {
     // jalankan query, jika error, proses nya akan berhenti dan ditampilkan pesan
     mysqli_query($link, $query) or die(mysqli_error($link));
 
-    header('Location: index.php');
+    // cek apakah ada baris data yang berpengaruh
+    if(mysqli_affected_rows($link)){
+        echo "<script>alert('data movie berhasil ditambahkan!'); document.location.href = 'index.php'</script>";
+    }else{
+        echo "<script>alert('data movie gagal ditambahkan!'); document.location.href = 'tambah.php'</script>";
+    }
+    
 }
 
 ?>
@@ -64,37 +70,37 @@ if (isset($_POST['submit'])) {
 
         <div class="input-group">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" autofocus>
+            <input type="text" name="title" id="title" required autofocus>
         </div>
 
         <div class="input-group">
             <label for="year">Tahun</label>
-            <input type="text" name="year" id="year">
+            <input type="text" name="year" id="year" required>
         </div>
 
         <div class="input-group">
             <label for="genre">Genre</label>
-            <input type="text" name="genre" id="genre">
+            <input type="text" name="genre" id="genre" required>
         </div>
 
         <div class="input-group">
             <label for="director">Director</label>
-            <input type="text" name="director" id="director">
+            <input type="text" name="director" id="director" required>
         </div>
 
         <div class="input-group">
             <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="5"></textarea>
+            <textarea name="description" id="description" cols="30" rows="5" required></textarea>
         </div>
 
         <div class="input-group">
             <label for="release_date">Release Date</label>
-            <input type="date" name="release_date" id="release_date">
+            <input type="date" name="release_date" id="release_date" required>
         </div>
 
         <div class="input-group">
             <label for="cover">cover</label>
-            <input type="text" name="cover" id="cover">
+            <input type="text" name="cover" id="cover" required>
         </div>
 
         <button type="submit" class="btn-submit" name="submit">Submit</button>
