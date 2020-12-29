@@ -36,7 +36,6 @@ $movies = $data;
         body {
             font-family: sans-serif;
             margin: 3% 10%;
-
         }
 
         table {
@@ -81,7 +80,7 @@ $movies = $data;
                     <td><?= $movie['genre']; ?></td>
                     <td><?= $movie['year']; ?></td>
                     <td>
-                        <img src="img/<?= $movie['cover'] ?>" alt="gambar">
+                        <img src="img/<?= $movie['cover'] ?>" alt="<?= $movie['title']; ?>">
                     </td>
                     <td>
                         <a href="detail.php?id=<?= $movie['id'] ?>">lihat detail</a>

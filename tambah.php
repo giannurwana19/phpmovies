@@ -4,17 +4,26 @@
 $link = mysqli_connect('localhost', 'root', '', 'phpmovies');
 
 // cek jika tombol submit sudah ditekan
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     // ambil semua data form
     $title = $_POST['title'];
+    $slug = strtolower(str_replace(' ', '-', $title));
     $year = $_POST['year'];
     $genre = $_POST['genre'];
     $director = $_POST['director'];
     $description = $_POST['description'];
     $release_date = $_POST['release_date'];
     $cover = $_POST['cover'];
-    
-    echo "$title, $year, $genre, $director, $description, $release_date, $cover";
+
+    $query = "INSERT INTO movies
+        (title, slug, year, genre, director, description, release_date, cover)
+        VALUES ('$title', '$slug', '$year', '$genre', '$director', '$description', '$release_date', '$cover')
+    ";
+
+    // jalankan query, jika error, proses nya akan berhenti dan ditampilkan pesan
+    mysqli_query($link, $query) or die(mysqli_error($link));
+
+    header('Location: index.php');
 }
 
 ?>

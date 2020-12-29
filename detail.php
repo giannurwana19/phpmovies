@@ -20,17 +20,20 @@ $movie = mysqli_fetch_assoc($result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Movies</title>
+    <title>Detail Movie</title>
     <style>
         body {
             font-family: sans-serif;
             margin: 3% 10%;
-
         }
     </style>
 </head>
 
 <body>
+    <h1>Detail Movie</h1>
+    <div class="card-image">
+        <img src="img/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>">
+    </div>
     <h3><?= $movie['title']; ?> (<em><?= $movie['year']; ?>)</h3>
     <em><?= $movie['genre']; ?></em> | <em><?= $movie['release_date']; ?></em>
     <p><?= $movie['description']; ?></p>
@@ -38,8 +41,8 @@ $movie = mysqli_fetch_assoc($result);
         <li>Director : <?= $movie['director']; ?></li>
     </ul>
 
-    <a href="">Edit</a> | 
-    <a href="">Hapus</a> | 
+    <a href="">Edit</a> |
+    <a href="">Hapus</a> |
     <a href="index.php">Home</a>
 </body>
 

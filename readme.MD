@@ -15,4 +15,6 @@ Nama Database : phpmovies
 
 project ini merupakan hasil belajar dari baledemy
 
+_"SELAMAT BELAJAR!"_
+
 #### _*Keep Spirit & keep coding!"*_
