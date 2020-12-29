@@ -60,6 +60,10 @@ $movies = $data;
     <h1>Daftar Movies</h1>
 
     <a href="tambah.php">+ Tambah data</a><br><br>
+
+    <?php if(isset($_GET['success'])): ?>
+    <p style="color: green;">Data berhasil <?= $_GET['success']; ?>!</p>
+    <?php endif; ?>
     <table>
         <thead>
             <tr>
