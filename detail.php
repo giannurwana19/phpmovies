@@ -13,8 +13,6 @@ $result = mysqli_query($link, "SELECT * FROM movies WHERE id = '$id'");
 // tampung data array
 $movie = mysqli_fetch_assoc($result);
 
-var_dump($movie);
-
 ?>
 
 <!DOCTYPE html>

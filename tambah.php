@@ -28,10 +28,7 @@ if (isset($_POST['submit'])) {
     // cek apakah ada baris data yang berpengaruh
     if(mysqli_affected_rows($link)){
         echo "<script>alert('data movie berhasil ditambahkan!'); document.location.href = 'index.php'</script>";
-    }else{
-        echo "<script>alert('data movie gagal ditambahkan!'); document.location.href = 'tambah.php'</script>";
     }
-    
 }
 
 ?>
